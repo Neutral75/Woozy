@@ -1,0 +1,28 @@
+{
+  "name": "nano",
+  "version": "1.0.0",
+  "description": "Nano is a free link shortening tool, it can turn your long and weird link into a nice and easy-to-read one. 'Nano' it today!",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neutral75/Nano.git"
+  },
+  "keywords": [
+    "nano",
+    "link-shortener"
+  ],
+  "author": "neutral75",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Neutral75/Nano/issues"
+  },
+  "homepage": "https://github.com/Neutral75/Nano#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mongoose": "^6.6.0"
+  }
+}
