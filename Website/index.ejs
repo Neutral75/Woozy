@@ -10,13 +10,11 @@
 
 <body>
     <center>
-        <form>
             <form action="/nanolink" method="post">
                 <label for="link">Link</label>
-                <input type="url" name="link" />
+                <input type="url" id="link" name="link" />
                 <button type="submit">Nano it!</button>
             </form>
-        </form>
         <br>
         <br>
         <table>
@@ -25,11 +23,19 @@
                 <th>Nano link</th>
                 <th>Clicks</th>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            <% nanolinks.forEach(nano => { %>
+                <tr>
+                    <td><a href="<%= nano.link %>">
+                            <%= nano.link %>
+                        </a></td>
+                    <td><a href="<%= nano.nanolink %>">
+                            <%= nano.nanolink %>
+                        </a></td>
+                    <td>
+                        <%= nano.clicks %>
+                    </td>
+                </tr>
+                <% }); %>
         </table>
     </center>
 </body>

@@ -16,15 +16,30 @@ app.use(express.static(path.join(__dirname, '../')));
 app.set('views', path.join(__dirname, './Website'));
 app.set('view engine', 'ejs');
 
-app.get('/', async (request, response) => {
-    response.render('index');
+app.get('/', async (req, res) => {
+    const nanolinks = await nano.find();
+    res.render('index', { nanolinks: nanolinks });
 });
 
-app.post('/nanolink', async (request, response) => {
+app.get('/:nano', async (req, res) => {
+    const nanolink = await nano.findOne({ nanolink: req.params.nano });
+
+    if (nanolink === null) {
+        return res.redirect('/');
+    }
+
+    nanolink.clicks++;
+    nanolink.save();
+
+    res.redirect(nanolink.link)
+});
+
+app.post('/nanolink', async (req, res) => {
     await nano.create({ 
-        link: request.body.link,
+        link: req.body.link,
         nanolink: nanoID(7)
     });
+
     res.redirect('/');
 });
 
