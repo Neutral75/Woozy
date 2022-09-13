@@ -8,6 +8,7 @@ mongoose.connect('', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
+
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
@@ -17,8 +18,13 @@ app.set('views', path.join(__dirname, './Website'));
 app.set('view engine', 'ejs');
 
 app.get('/', async (req, res) => {
+    res.render('index');
+});
+
+app.get('/link', async (req, res) => {
     const nanolinks = await nano.find();
-    res.render('index', { nanolinks: nanolinks });
+
+    res.render('link', { nanolinks: nanolinks });;
 });
 
 app.get('/:nano', async (req, res) => {
@@ -35,12 +41,14 @@ app.get('/:nano', async (req, res) => {
 });
 
 app.post('/nanolink', async (req, res) => {
-    await nano.create({ 
+    await nano.create({
         link: req.body.link,
         nanolink: nanoID(7)
     });
 
-    res.redirect('/');
+    res.redirect('/link');
 });
 
-app.listen(3000);
+app.listen(3000, () => {
+    console.log('Beep!')
+});
