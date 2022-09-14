@@ -17,36 +17,44 @@ app.use(express.static(path.join(__dirname, '../')));
 app.set('views', path.join(__dirname, './Website'));
 app.set('view engine', 'ejs');
 
-app.get('/', async (req, res) => {
-    res.render('index');
+app.get('/', async (request, response) => {
+    response.render('index');
 });
 
-app.get('/link', async (req, res) => {
+app.get('/authorize', async (request, response) => {
+    response.redirect('/link');
+});
+
+app.get('/link', async (request, response) => {
     const nanolinks = await nano.find();
 
-    res.render('link', { nanolinks: nanolinks });;
+    response.render('link', { nanolinks: nanolinks });
 });
 
-app.get('/:nano', async (req, res) => {
-    const nanolink = await nano.findOne({ nanolink: req.params.nano });
+app.get('/:nano', async (request, response) => {
+    const nanolink = await nano.findOne({ nanolink: request.params.nano });
 
     if (nanolink === null) {
-        return res.redirect('/');
+        return response.redirect('/');
     }
 
     nanolink.clicks++;
     nanolink.save();
 
-    res.redirect(nanolink.link)
+    response.redirect(nanolink.link)
 });
 
-app.post('/nanolink', async (req, res) => {
+app.post('/nanolink', async (request, response) => {
+    if (request.body.link === '') {
+        return response.redirect('/link');
+    };
+
     await nano.create({
-        link: req.body.link,
+        link: request.body.link,
         nanolink: nanoID(7)
     });
 
-    res.redirect('/link');
+    response.redirect('/link');
 });
 
 app.listen(3000, () => {
