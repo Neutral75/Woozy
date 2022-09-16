@@ -21,10 +21,6 @@ app.get('/', async (request, response) => {
     response.render('index');
 });
 
-app.get('/authorize', async (request, response) => {
-    response.redirect('/link');
-});
-
 app.get('/link', async (request, response) => {
     const nanolinks = await nano.find();
 
