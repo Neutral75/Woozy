@@ -1,10 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const nano = require('./Schemas/nano.js');
-const nanoID = require('./nanoID.js');
+const fizzy = require('./Schemas/fizzy.js');
+const fizzyID = require('./fizzyID.js');
 
-mongoose.connect('', {
+mongoose.connect('mongodb+srv://Neutral75:GringottsPassword@gringotts.tuvpqzf.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -22,32 +22,38 @@ app.get('/', async (request, response) => {
 });
 
 app.get('/link', async (request, response) => {
-    const nanolinks = await nano.find();
+    const fizzylinks = await fizzy.find();
 
-    response.render('link', { nanolinks: nanolinks });
+    response.render('link', { fizzylinks: fizzylinks });
 });
 
-app.get('/:nano', async (request, response) => {
-    const nanolink = await nano.findOne({ nanolink: request.params.nano });
+app.get('/:fizzy', async (request, response) => {
+    const fizzylink = await fizzy.findOne({
+        date: {
+            shortURL: request.params.fizzy
+        }
+    });
 
-    if (nanolink === null) {
+    if (fizzylink === null) {
         return response.redirect('/');
     }
 
-    nanolink.clicks++;
-    nanolink.save();
+    fizzylink.clicks++;
+    fizzylink.save();
 
-    response.redirect(nanolink.link)
+    response.redirect(fizzylink.data.longURL)
 });
 
-app.post('/nanolink', async (request, response) => {
+app.post('/fizzylink', async (request, response) => {
     if (request.body.link === '') {
         return response.redirect('/link');
     };
 
-    await nano.create({
-        link: request.body.link,
-        nanolink: nanoID(7)
+    await fizzy.create({
+        data: {
+            longURL: request.body.link,
+            shortURL: fizzyID(7)
+        }
     });
 
     response.redirect('/link');

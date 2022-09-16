@@ -10,33 +10,29 @@
 
 <body>
     <center>
-        <img id="avatar" src="" alt="" />
-        <h1 id="id">ID:</h1>
-        <h1 id="name">Name:</h1>
-        <h1 id="email">Email:</h1>
-        <form action="/nanolink" method="post">
+        <form action="/fizzylink" method="post">
             <label for="link">Link</label>
             <input type="url" id="link" name="link" />
-            <button type="submit">Nano it!</button>
+            <button type="submit">Fizz it!</button>
         </form>
         <br>
         <br>
         <table>
             <tr>
-                <th>Link</th>
-                <th>Nano link</th>
+                <th>Long URL</th>
+                <th>Short URL</th>
                 <th>Clicks</th>
             </tr>
-            <% nanolinks.forEach(nano=> { %>
+            <% fizzylinks.forEach(fizzy=> { %>
                 <tr>
-                    <td><a href="<%= nano.link %>">
-                            <%= nano.link %>
+                    <td><a href="<%= fizzy.data.longURL %>">
+                            <%= fizzy.data.longURL %>
                         </a></td>
-                    <td><a href="<%= nano.nanolink %>">
-                            <%= nano.nanolink %>
+                    <td><a href="<%= fizzy.data.shortURL %>">
+                            <%= fizzy.data.shortURL %>
                         </a></td>
                     <td>
-                        <%= nano.clicks %>
+                        <%= fizzy.data.clicks %>
                     </td>
                 </tr>
                 <% }); %>

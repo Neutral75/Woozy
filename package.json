@@ -1,29 +1,26 @@
 {
-  "name": "nano",
+  "name": "fizzy",
   "version": "1.0.0",
-  "description": "Nano is a free link shortening tool, it can turn your long and weird link into a nice and easy-to-read one. 'Nano' it today!",
+  "description": "Fizzy is a free link shortening tool, it can turn your long and weird link into a nice and easy-to-read one. 'Fizz' it today!",
   "main": "server.js",
   "scripts": {
-    "test": "node server.js"
+    "test": "node .",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Neutral75/Nano.git"
+    "url": "git+https://github.com/Neutral75/fizzy.git"
   },
-  "keywords": [
-    "nano",
-    "link-shortener"
-  ],
-  "author": "neutral75",
+  "author": "Neutral75",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Neutral75/Nano/issues"
+    "url": "https://github.com/Neutral75/fizzy/issues"
   },
-  "homepage": "https://github.com/Neutral75/Nano#readme",
+  "homepage": "https://github.com/Neutral75/fizzy#readme",
   "dependencies": {
     "ejs": "^3.1.8",
     "express": "^4.18.1",
-    "mongoose": "^6.6.0",
+    "mongoose": "^6.6.1",
     "path": "^0.12.7"
   }
 }

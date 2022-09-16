@@ -1,6 +1,6 @@
 const characters = 'bDfHjKlNpRtVxZAcEgIkMoQsUwY_0123456789-BdFhJkLnPrTvXzaCeGiKmOqSuW';
 
-function nanoID(length) {
+function fizzyID(length) {
     let result = 0;
     const charactersLength = characters.length;
     for (let i = 0; i < length; i++) {
@@ -10,4 +10,4 @@ function nanoID(length) {
     return result;
 };
 
-module.exports = nanoID;
+module.exports = fizzyID;
