@@ -21,6 +21,10 @@ app.get('/', async (request, response) => {
     response.render('index');
 });
 
+app.get('/home', async (request, response) => {
+    response.render('index');
+});
+
 app.get('/link', async (request, response) => {
     const fizzylinks = await fizzy.find();
 
