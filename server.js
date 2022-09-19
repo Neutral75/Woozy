@@ -4,7 +4,7 @@ const path = require('path');
 const fizzy = require('./Schemas/fizzy.js');
 const fizzyID = require('./fizzyID.js');
 
-mongoose.connect('mongodb+srv://Neutral75:GringottsPassword@gringotts.tuvpqzf.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -18,22 +18,22 @@ app.set('views', path.join(__dirname, './Website'));
 app.set('view engine', 'ejs');
 
 app.get('/', async (request, response) => {
-    response.render('index');
+    response.render('home');
 });
 
 app.get('/home', async (request, response) => {
-    response.render('index');
+    response.render('home');
 });
 
 app.get('/link', async (request, response) => {
-    const fizzylinks = await fizzy.find();
+    const fizzylink = await fizzy.find();
 
-    response.render('link', { fizzylinks: fizzylinks });
+    response.render('link', { fizzylink: fizzylink });
 });
 
 app.get('/:fizzy', async (request, response) => {
     const fizzylink = await fizzy.findOne({
-        date: {
+        data: {
             shortURL: request.params.fizzy
         }
     });
@@ -50,17 +50,17 @@ app.get('/:fizzy', async (request, response) => {
 
 app.post('/fizzylink', async (request, response) => {
     if (request.body.link === '') {
-        return response.redirect('/link');
+        return response.redirect('link');
     };
 
     await fizzy.create({
         data: {
-            longURL: request.body.link,
-            shortURL: fizzyID(7)
+            shortURL: fizzyID(6),
+            longURL: request.body.link
         }
     });
 
-    response.redirect('/link');
+    response.redirect('link');
 });
 
 app.listen(3000, () => {

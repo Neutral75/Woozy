@@ -2,9 +2,11 @@ const mongoose = require('mongoose');
 
 const fizzy = new mongoose.Schema({
     data: {
+        id: {
+            type: String
+        },
         email: {
-            type: String,
-            default: 'None'
+            type: String
         },
         shortURL: {
             type: String
