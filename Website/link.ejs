@@ -22,17 +22,21 @@
                 <th>Long URL</th>
                 <th>Short URL</th>
                 <th>Clicks</th>
+                <th>Date Created</th>
             </tr>
             <% fizzylink.forEach(fizzy=> { %>
                 <tr>
-                    <td><a href="<%= fizzy.data.longURL %>">
-                            <%= fizzy.data.longURL %>
+                    <td><a href="<%= fizzy.longURL %>">
+                            <%= fizzy.longURL %>
                         </a></td>
-                    <td><a href="<%= fizzy.data.shortURL %>">
-                            <%= fizzy.data.shortURL %>
+                    <td><a href="<%= fizzy.shortURL %>">
+                            <%= fizzy.shortURL %>
                         </a></td>
                     <td>
-                        <%= fizzy.data.clicks %>
+                        <%= fizzy.clicks %>
+                    </td>
+                    <td>
+                        <%= fizzy.date %>
                     </td>
                 </tr>
                 <% }); %>

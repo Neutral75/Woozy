@@ -33,9 +33,7 @@ app.get('/link', async (request, response) => {
 
 app.get('/:fizzy', async (request, response) => {
     const fizzylink = await fizzy.findOne({
-        data: {
-            shortURL: request.params.fizzy
-        }
+        shortURL: request.params.fizzy
     });
 
     if (fizzylink === null) {
@@ -45,7 +43,7 @@ app.get('/:fizzy', async (request, response) => {
     fizzylink.clicks++;
     fizzylink.save();
 
-    response.redirect(fizzylink.data.longURL)
+    response.redirect(fizzylink.longURL)
 });
 
 app.post('/fizzylink', async (request, response) => {
@@ -54,10 +52,9 @@ app.post('/fizzylink', async (request, response) => {
     };
 
     await fizzy.create({
-        data: {
-            shortURL: fizzyID(6),
-            longURL: request.body.link
-        }
+        shortURL: fizzyID(6),
+        longURL: request.body.link,
+        date: new Date().toLocaleDateString('en-uk', { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' })
     });
 
     response.redirect('link');
