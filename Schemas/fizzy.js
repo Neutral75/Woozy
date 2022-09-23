@@ -5,10 +5,6 @@ const fizzy = new mongoose.Schema({
         type: String
     },
 
-    email: {
-        type: String
-    },
-
     shortURL: {
         type: String
     },

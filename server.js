@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const user = require('./Schemas/user.js');
 const fizzy = require('./Schemas/fizzy.js');
 const fizzyID = require('./fizzyID.js');
 
@@ -25,6 +26,10 @@ app.get('/home', async (request, response) => {
     response.render('home');
 });
 
+app.get('/login', async (request, response) => {
+    response.redirect('');
+});
+
 app.get('/link', async (request, response) => {
     const fizzylink = await fizzy.find();
 
@@ -38,12 +43,12 @@ app.get('/:fizzy', async (request, response) => {
 
     if (fizzylink === null) {
         return response.redirect('/');
-    }
+    };
 
     fizzylink.clicks++;
     fizzylink.save();
 
-    response.redirect(fizzylink.longURL)
+    response.redirect(fizzylink.longURL);
 });
 
 app.post('/fizzylink', async (request, response) => {
@@ -51,7 +56,14 @@ app.post('/fizzylink', async (request, response) => {
         return response.redirect('link');
     };
 
+    const userSchema = await user.findOne({ id: request.body.id }) || await user.create({ id: request.body.id });
+
+    userSchema.email = request.body.email;
+    userSchema.urls += 1;
+    userSchema.save();
+
     await fizzy.create({
+        id: request.body.id,
         shortURL: fizzyID(6),
         longURL: request.body.link,
         date: new Date().toLocaleDateString('en-uk', { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' })
@@ -61,5 +73,5 @@ app.post('/fizzylink', async (request, response) => {
 });
 
 app.listen(3000, () => {
-    console.log('Beep!')
+    console.log('Beep!');
 });

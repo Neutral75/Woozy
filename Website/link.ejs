@@ -10,38 +10,48 @@
 
 <body>
     <center>
+        <img id="content-avatar" src="" />
+        <h2 id="content-id">ID:</h2>
+        <h2 id="content-username">Username:</h2>
+        <h2 id="content-email">Email:</h2>
+        <br>
         <form action="/fizzylink" method="post">
             <label for="link">Link</label>
             <input type="url" id="link" name="link" />
+            <input type="text" id="id" name="id" style="display: none;" />
+            <input type="email" id="email" name="email" style="display: none;" />
             <button type="submit">Fizz it!</button>
         </form>
-        <br>
-        <br>
-        <table>
-            <tr>
-                <th>Long URL</th>
-                <th>Short URL</th>
-                <th>Clicks</th>
-                <th>Date Created</th>
-            </tr>
-            <% fizzylink.forEach(fizzy=> { %>
-                <tr>
-                    <td><a href="<%= fizzy.longURL %>">
-                            <%= fizzy.longURL %>
-                        </a></td>
-                    <td><a href="<%= fizzy.shortURL %>">
-                            <%= fizzy.shortURL %>
-                        </a></td>
-                    <td>
-                        <%= fizzy.clicks %>
-                    </td>
-                    <td>
-                        <%= fizzy.date %>
-                    </td>
-                </tr>
-                <% }); %>
-        </table>
     </center>
+    <script>
+        window.onload = () => {
+            const fragment = new URLSearchParams(window.location.hash.slice(1));
+            const [accessToken, tokenType, state] = [fragment.get('access_token'), fragment.get('token_type'), fragment.get('state')];
+
+            if (!accessToken) {
+                window.location.href = 'http://localhost:3000/login';
+            };
+
+            fetch('https://discord.com/api/users/@me', {
+                headers: {
+                    authorization: `${tokenType} ${accessToken}`,
+                },
+            })
+                .then(result => result.json())
+                .then(response => {
+                    const { avatar, email, id, username } = response;
+
+                    document.getElementById('content-avatar').src = `https://cdn.discordapp.com/avatars/${id}/${avatar}.jpg`;
+                    document.getElementById('content-id').innerText += ` ${id}`;
+                    document.getElementById('content-username').innerText += ` ${username}`;
+                    document.getElementById('content-email').innerText += ` ${email}`;
+
+                    document.getElementById('id').value = id;
+                    document.getElementById('email').value = email;
+                })
+                .catch(console.error);
+        }
+    </script>
 </body>
 
 </html>
