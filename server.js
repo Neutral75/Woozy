@@ -26,14 +26,8 @@ app.get('/home', async (request, response) => {
     response.render('home');
 });
 
-app.get('/login', async (request, response) => {
-    response.redirect('');
-});
-
 app.get('/link', async (request, response) => {
-    const fizzylink = await fizzy.find();
-
-    response.render('link', { fizzylink: fizzylink });
+    response.render('link');
 });
 
 app.get('/:fizzy', async (request, response) => {
@@ -52,24 +46,49 @@ app.get('/:fizzy', async (request, response) => {
 });
 
 app.post('/fizzylink', async (request, response) => {
-    if (request.body.link === '') {
+    if (!request.body.link) {
         return response.redirect('link');
     };
 
-    const userSchema = await user.findOne({ id: request.body.id }) || await user.create({ id: request.body.id });
+    if (request.body.email) {
+        const userSchema = await user.findOne({
+            email: request.body.email 
+        }) || await user.create({
+            email: request.body.email
+        });
 
-    userSchema.email = request.body.email;
-    userSchema.urls += 1;
-    userSchema.save();
+        userSchema.urls += 1;
+        userSchema.save();
+    };
+
+    const shortURL = fizzyID(6);
+    const longURL = request.body.link;
 
     await fizzy.create({
-        id: request.body.id,
-        shortURL: fizzyID(6),
-        longURL: request.body.link,
-        date: new Date().toLocaleDateString('en-uk', { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' })
+        email: request.body.email || 'None',
+        shortURL: shortURL,
+        longURL: longURL,
+        date: new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' })
     });
 
-    response.redirect('link');
+    response.render('success', {
+        shortURL: shortURL,
+        longURL: longURL
+    });
+});
+
+app.post('/fizzylist', async (request, response) => {
+    if (!request.body.email) {
+        return response.redirect('link');
+    };
+
+    const fizzylink = await fizzy.find({
+        email: request.body.email
+    });
+
+    response.render('link-list', {
+        fizzylink: fizzylink
+    });
 });
 
 app.listen(3000, () => {

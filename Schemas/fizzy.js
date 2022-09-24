@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const fizzy = new mongoose.Schema({
-    id: {
+    email: {
         type: String
     },
 
