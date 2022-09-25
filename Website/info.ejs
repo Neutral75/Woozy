@@ -5,11 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fizzy - Linklist</title>
+    <title>Fizzy - Info</title>
+    <link rel="stylesheet" href="Styles/style.css" type="text/css">
 </head>
 
 <body>
     <center>
+        <h1>Email: <%= userSchema.email %>
+        </h1>
+        <h1>Premium: <%= userSchema.premium %>
+        </h1>
+        <h1>URLs: <%= userSchema.urls %>
+        </h1>
         <table>
             <tr>
                 <th>Long URL</th>
@@ -17,7 +24,7 @@
                 <th>Clicks</th>
                 <th>Date Created</th>
             </tr>
-            <% fizzylink.forEach(fizzy=> { %>
+            <% fizzylink.forEach((fizzy)=> { %>
                 <tr>
                     <td><a href="<%= fizzy.longURL %>">
                             <%= fizzy.longURL %>

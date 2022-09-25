@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&display=swap');
+
+:root {
+    --background: ;
+    --primary: ;
+    --light: #f7eeee;
+    --dark: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Amaranth', sans-serif;
+}
+
+body {
+    background: var(--background);
+    color: var(--dark);
+}

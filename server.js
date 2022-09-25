@@ -13,7 +13,7 @@ mongoose.connect('', {
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, '../')));
+app.use(express.static(path.join(__dirname, './Website')));
 
 app.set('views', path.join(__dirname, './Website'));
 app.set('view engine', 'ejs');
@@ -77,16 +77,21 @@ app.post('/fizzylink', async (request, response) => {
     });
 });
 
-app.post('/fizzylist', async (request, response) => {
+app.post('/fizzyinfo', async (request, response) => {
     if (!request.body.email) {
         return response.redirect('link');
     };
+
+    const userSchema = await user.findOne({
+        email: request.body.email
+    });
 
     const fizzylink = await fizzy.find({
         email: request.body.email
     });
 
-    response.render('link-list', {
+    response.render('info', {
+        userSchema: userSchema,
         fizzylink: fizzylink
     });
 });
