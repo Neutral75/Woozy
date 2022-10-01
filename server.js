@@ -2,8 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const user = require('./Schemas/user.js');
-const fizzy = require('./Schemas/fizzy.js');
-const fizzyID = require('./fizzyID.js');
+const woozy = require('./Schemas/woozy.js');
+const woozyID = require('./woozyID.js');
 
 mongoose.connect('', {
     useNewUrlParser: true,
@@ -30,42 +30,42 @@ app.get('/link', async (request, response) => {
     response.render('link');
 });
 
-app.get('/:fizzy', async (request, response) => {
-    const fizzylink = await fizzy.findOne({
-        shortURL: request.params.fizzy
+app.get('/:woozy', async (request, response) => {
+    const woozylink = await woozy.findOne({
+        shortURL: request.params.woozy
     });
 
-    if (fizzylink === null) {
+    if (woozylink === null) {
         return response.redirect('/');
     };
 
-    fizzylink.clicks++;
-    fizzylink.save();
+    woozylink.clicks++;
+    woozylink.save();
 
-    response.redirect(fizzylink.longURL);
+    response.redirect(woozylink.longURL);
 });
 
-app.post('/fizzylink', async (request, response) => {
+app.post('/woozylink', async (request, response) => {
     if (!request.body.link) {
         return response.redirect('link');
     };
 
-    if (request.body.email) {
+    if (request.body.email.toLowerCase()) {
         const userSchema = await user.findOne({
-            email: request.body.email 
+            email: request.body.email.toLowerCase()
         }) || await user.create({
-            email: request.body.email
+            email: request.body.email.toLowerCase()
         });
 
         userSchema.urls += 1;
         userSchema.save();
     };
 
-    const shortURL = fizzyID(6);
+    const shortURL = woozyID(6);
     const longURL = request.body.link;
 
-    await fizzy.create({
-        email: request.body.email || 'None',
+    await woozy.create({
+        email: request.body.email.toLowerCase() || 'None',
         shortURL: shortURL,
         longURL: longURL,
         date: new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' })
@@ -77,22 +77,22 @@ app.post('/fizzylink', async (request, response) => {
     });
 });
 
-app.post('/fizzyinfo', async (request, response) => {
+app.post('/woozyinfo', async (request, response) => {
     if (!request.body.email) {
         return response.redirect('link');
     };
 
     const userSchema = await user.findOne({
-        email: request.body.email
+        email: request.body.email.toLowerCase()
     });
 
-    const fizzylink = await fizzy.find({
-        email: request.body.email
+    const woozylink = await woozy.find({
+        email: request.body.email.toLowerCase()
     });
 
     response.render('info', {
         userSchema: userSchema,
-        fizzylink: fizzylink
+        woozylink: woozylink
     });
 });
 

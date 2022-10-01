@@ -1,6 +1,6 @@
 const characters = 'bDfHjKlNpRtVxZAcEgIkMoQsUwY_0123456789-BdFhJkLnPrTvXzaCeGiKmOqSuW';
 
-function fizzyID(length) {
+function woozyID(length) {
     let result = 0;
     const charactersLength = characters.length;
     for (let i = 0; i < length; i++) {
@@ -10,4 +10,4 @@ function fizzyID(length) {
     return result;
 };
 
-module.exports = fizzyID;
+module.exports = woozyID;

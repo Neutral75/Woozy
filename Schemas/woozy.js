@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const fizzy = new mongoose.Schema({
+const woozy = new mongoose.Schema({
     email: {
         type: String
     },
@@ -23,4 +23,4 @@ const fizzy = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('fizzy', fizzy);
+module.exports = mongoose.model('woozy', woozy);

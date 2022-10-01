@@ -24,19 +24,19 @@
                 <th>Clicks</th>
                 <th>Date Created</th>
             </tr>
-            <% fizzylink.forEach((fizzy)=> { %>
+            <% woozylink.forEach((woozy)=> { %>
                 <tr>
-                    <td><a href="<%= fizzy.longURL %>">
-                            <%= fizzy.longURL %>
+                    <td><a href="<%= woozy.longURL %>">
+                            <%= woozy.longURL %>
                         </a></td>
-                    <td><a href="<%= fizzy.shortURL %>">
-                            <%= fizzy.shortURL %>
+                    <td><a href="<%= woozy.shortURL %>">
+                            <%= woozy.shortURL %>
                         </a></td>
                     <td>
-                        <%= fizzy.clicks %>
+                        <%= woozy.clicks %>
                     </td>
                     <td>
-                        <%= fizzy.date %>
+                        <%= woozy.date %>
                     </td>
                 </tr>
                 <% }); %>
