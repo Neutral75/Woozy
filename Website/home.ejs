@@ -5,15 +5,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fizzy - Home</title>
+    <title>Woozy - Home</title>
     <link rel="stylesheet" href="Styles/style.css" type="text/css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
-    <center>
-        <p>Welcome!</p>
-        <a href="link">Try now!</a>
-    </center>
+    <header>
+        <a class="logo" href="/">WOOZY</a>
+        <nav>
+            <ul>
+                <li><a href="home">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Donate</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="link">Try it now!</a>
+        <a class="cta menu" href="link">Try it now!</a>
+    </header>
+    <main>
+        <section class="home" id="home">
+            <div class="image">
+                <img src="Assets/woozy.png" alt="Logo" />
+            </div>
+            <div class="content">
+                <h3>Woozy - The only tool you <a style="color: var(--primary);">need!</a></h3>
+                <hr>
+                <p>Are you're links too <a style="color: var(--primary);">hideous</a> and <a
+                        style="color: var(--primary);">spun-out</a>? Try something better!</p>
+                <a href="#about"><button>Try it now!</button></a>
+            </div>
+        </section>
+    </main>
+
+    <script src="Scripts/script.js"></script>
 </body>
 
 </html>

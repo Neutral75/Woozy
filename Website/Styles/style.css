@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Amaranth&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
 
 :root {
     --background: ;
-    --primary: ;
+    --primary: #45AC5B;
+    --secondary: #FEE75C;
     --light: #f7eeee;
     --dark: #000000;
 }
@@ -11,10 +12,192 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Amaranth', sans-serif;
+    font-family: 'DynaPuff', sans-serif;
+}
+
+::selection {
+    color: var(--light);
+    background: var(--primary);
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border-radius: 20px;
+    border: 2px solid var(--dark);
 }
 
 body {
     background: var(--background);
     color: var(--dark);
+}
+
+section {
+    padding: 32px 9%;
+    margin-bottom: 105px;
+}
+
+/* ----- Header ----- */
+header {
+    background-color: var(--dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10%;
+    border-bottom: 4px solid var(--primary);
+}
+
+header .logo {
+    color: var(--light);
+    font-size: 35px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+}
+
+header nav ul li {
+    margin: 0 5px;
+    padding: 15px 20px;
+    border-radius: 25px;
+}
+
+header nav ul li a {
+    color: #a0a0a0;
+    position: relative;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease 0s;
+}
+
+header nav ul li a:hover {
+    color: var(--light);
+}
+
+header nav ul li a:after {
+    content: '';
+    background-color: var(--primary);
+    position: absolute;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: 0px;
+    transition: 0.3s;
+}
+
+header nav ul li a:hover:after {
+    width: 100%;
+}
+
+header .cta {
+    background-color: var(--primary);
+    color: var(--light);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 9px 25px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease 0s;
+}
+
+header .cta:hover {
+    background-color: var(--primary);
+}
+
+header .menu {
+    display: none;
+}
+
+@media only screen and (max-width: 970px) {
+
+    header nav ul,
+    header .cta {
+        display: none;
+    }
+
+    header .menu {
+        display: initial;
+    }
+}
+
+/* ----- Main ----- */
+main .home {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 144px;
+    gap: 24px;
+}
+
+main .home .image {
+    flex: 1 1 672px;
+}
+
+main .home .image img {
+    width: 70%;
+}
+
+main .home .content {
+    flex: 1 1 672px;
+    z-index: 1;
+}
+
+main .home .content h3 {
+    color: var(--dark);
+    font-size: 55px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+main .home .content h3 a {
+    color: var(--primary);
+    font-size: 50px;
+}
+
+main .home .content p {
+    color: var(--dark);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.8;
+    padding: 8px 0;
+}
+
+main .home .content span {
+    -webkit-text-stroke: 0.4px var(--dark);
+    color: var(--primary);
+}
+
+main .home .content hr {
+    background-color: var(--dark);
+    height: 2px;
+    border: none;
+}
+
+main .home .content button {
+    background: var(--primary);
+    font-size: 18px;
+    font-weight: 500;
+    padding: 15px 110px;
+    border: 3px solid var(--dark);
+    border-radius: 5px;
+    transition: 0.3s;
+    box-shadow: 6px 8px;
+    cursor: pointer;
+}
+
+main .home .content button:hover {
+    box-shadow: 2px 4px;
 }
