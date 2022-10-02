@@ -18,6 +18,12 @@
         <p>Your original link: <a href="<%= longURL %>">
                 <%= longURL %>
             </a></p>
+        <% if (!email) { %>
+            <p>This link was not saved to an email!</p>
+            <% } else { %>
+                <p>This link was saved to: <%= email %>
+                </p>
+                <% } %>
     </center>
 </body>
 

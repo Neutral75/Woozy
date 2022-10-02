@@ -5,7 +5,7 @@ const user = require('./Schemas/user.js');
 const woozy = require('./Schemas/woozy.js');
 const woozyID = require('./woozyID.js');
 
-mongoose.connect('', {
+mongoose.connect('mongodb+srv://Neutral75:Gringotts@gringotts.tuvpqzf.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -72,6 +72,7 @@ app.post('/woozylink', async (request, response) => {
     });
 
     response.render('success', {
+        email: request.body.email,
         shortURL: shortURL,
         longURL: longURL
     });
