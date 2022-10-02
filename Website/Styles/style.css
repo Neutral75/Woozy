@@ -147,7 +147,7 @@ main .home .image {
 }
 
 main .home .image img {
-    width: 70%;
+    width: 75%;
 }
 
 main .home .content {
@@ -183,6 +183,7 @@ main .home .content span {
 main .home .content hr {
     background-color: var(--dark);
     height: 2px;
+    margin: 5px;
     border: none;
 }
 
@@ -190,6 +191,7 @@ main .home .content button {
     background: var(--primary);
     font-size: 18px;
     font-weight: 500;
+    margin-top: 5px;
     padding: 15px 110px;
     border: 3px solid var(--dark);
     border-radius: 5px;
@@ -200,4 +202,14 @@ main .home .content button {
 
 main .home .content button:hover {
     box-shadow: 2px 4px;
+}
+
+main .home .content button:visited {
+    text-decoration: none;
+}
+
+@media (max-width: 1670px) {
+    main .home .image img {
+        width: 37.5%;
+    }
 }
