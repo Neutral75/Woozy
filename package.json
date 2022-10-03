@@ -1,7 +1,7 @@
 {
   "name": "woozy",
   "version": "1.0.0",
-  "description": "woozy is a free link shortening tool, it can turn your long and weird link into a nice and easy-to-read one. 'Wooz' it today!",
+  "description": "Are your links too hideous and spun-out? Woozy is a free link shortening tool that can aid you. Why don't you wooz it!",
   "main": "server.js",
   "scripts": {
     "test": "node .",
