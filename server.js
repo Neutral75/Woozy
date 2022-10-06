@@ -1,11 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+require('dotenv').config()
 const user = require('./Schemas/user.js');
 const woozy = require('./Schemas/woozy.js');
 const woozyID = require('./woozyID.js');
 
-mongoose.connect('', {
+mongoose.connect(`${process.env.mongodbURL}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
