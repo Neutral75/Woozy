@@ -16,7 +16,7 @@
         <nav>
             <ul>
                 <li><a href="home">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#">Donate</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
@@ -27,20 +27,22 @@
     <main>
         <section class="home" id="home">
             <div class="image">
-                <img src="Assets/woozy.png" alt="Logo" />
+                <img src="Assets/woozy.png" id="main-logo" alt="Logo" />
             </div>
             <div class="content">
                 <h3>Woo<a style="color: var(--primary);">zy</a> - The only tool you <a
                         style="color: var(--primary);">need!</a></h3>
                 <hr>
                 <p>Are your links too <a style="color: var(--primary);">hideous</a> and <a
-                        style="color: var(--primary);">spun-out</a>? Why don't you wooz it!</p>
+                        style="color: var(--primary);">spun-out</a>? Why don't you wooz it! Halloween mode:
+                    <label><input type="checkbox" id="checkbox" onclick="halloweenMode()" /><span></span></label>
+                </p>
                 <a href="link"><button>Try it now for free!</button></a>
             </div>
         </section>
         <section class="about" id="about">
             <div class="content">
-                <h3>What is <span>W</span><span>o</span><span>o</span><span>z</span><span>y</span>!?</h3>
+                <h3>What is <span>Woozy</span>!?</h3>
                 <p>Woozy is a free link shortening tool made for fun by <a href="https://neutral.lol"
                         style="color: var(--primary); text-decoration: none;">Neutral</a>. Woozy can help you shorten
                     your hideous, spun-out
@@ -56,7 +58,9 @@
             </div>
         </section>
         <footer>
-            <p>Copyright &copy; 2022 Woozy. All Rights Reserved.</p>
+            <center>
+                <p>Copyright &copy; 2022 Woozy.<br>All Rights Reserved.</p>
+            </center>
         </footer>
     </main>
 
