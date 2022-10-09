@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
 
 :root {
-    --background: ;
+    --background: #FFFFFF;
     --primary: #45AC5B;
     --secondary: #FEE75C;
-    --light: #f7eeee;
+    --light: #F7EEEE;
     --dark: #000000;
 }
 
@@ -167,6 +167,11 @@ main .home .content h3 a {
     font-size: 50px;
 }
 
+main .home .content h3 span,
+main .home .content p span {
+    color: var(--primary);
+}
+
 main .home .content p {
     color: var(--dark);
     font-size: 30px;
@@ -214,15 +219,15 @@ main .home .content p label span:before {
     border-radius: 50%;
 }
 
-main .home .content p label input:checked + span {
+main .home .content p label input:checked+span {
     background-color: var(--primary);
 }
 
-main .home .content p label input:focus + span{
+main .home .content p label input:focus+span {
     box-shadow: 0 0 1px var(--primary)
 }
 
-main .home .content p label input:checked + span:before {
+main .home .content p label input:checked+span:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
@@ -262,41 +267,155 @@ main .home .content button:visited {
     }
 }
 
-main .about {
+main .link {
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0px;
+    padding: 256px; 
+}
+
+main .link .form {
+    background: var(--background);
+    position: absolute;
+    width: 100%;
+    max-width: 430px;
+    padding: 30px;
+    border-radius: 6px;
+}
+
+main .link .woozyinfo {
+    opacity: 0;
+    pointer-events: none;
+}
+
+main .link.show-woozyinfo .form.woozyinfo {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+main .link.show-woozyinfo .form.woozylink {
+    opacity: 0;
+    pointer-events: none;
+}
+
+main .link .form .content span {
+    color: #232836;
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+}
+
+main .link .form .content form {
+    margin-top: 30px;
+}
+
+main .link .form .content form .field {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    border-radius: 6px;
+}
+
+main .link .form .content form .field input,
+main .link .form .content form .field button {
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    border: none;
+    border-radius: 6px;
+}
+
+main .link .form .content form .field input {
+    padding: 0 15px;
+    outline: none;
+    border: 1px solid #CACACA;
+}
+
+main .link .form .content form .field input:focus {
+    border-bottom-width: 2px;
+}
+
+main .link .form .content form .field button {
+    background-color: var(--primary);
+    color: var(--dark);
+    border: 3px solid var(--dark);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+main .link .form .content .alternative {
+    text-align: center;
+    margin-top: 10px;
+}
+
+main .link .form .content .alternative span,
+main .link .form .content .alternative a {
+    color: #232836;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+main .link .form .content .alternative a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+main .link .form .content .alternative a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 400px) {
+    main .link .form {
+        padding: 20px 10px;
+    }
+
+}
+
+/* ---- Article ----- */
+article section {
+    padding: 32px 9%;
+    margin-bottom: 105px;
+}
+
+article .about {
+    background-color: var(--dark);
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 0;
     padding-top: 160px;
     gap: 50px;
-    background-color: var(--dark);
-    margin-bottom: 0;
 }
 
-main .about .image {
+article .about .image {
     flex: 1 1 112px;
 }
 
-.about .image img {
+article .about .image img {
     width: 60%;
 }
 
-main .about .content {
+article .about .content {
     flex: 1 1 672px;
     z-index: 1;
 }
 
-main .about .content h3 {
+article .about .content h3 {
     color: var(--light);
     font-size: 55px;
     line-height: 2;
 }
 
-main .about .content h3 span {
+article .about .content h3 span {
     color: var(--primary);
     text-shadow: 0 0 80px rgba(255, 255, 255, 1);
 }
 
-main .about .content p {
+article .about .content p {
     color: var(--light);
     font-size: 20px;
     font-weight: 500;
@@ -304,7 +423,7 @@ main .about .content p {
     padding: 8px 0;
 }
 
-/* Footer */
+/* ----- Footer ----- */
 footer {
     background-color: var(--dark);
     display: flex;

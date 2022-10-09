@@ -27,10 +27,6 @@ app.get('/home', async (request, response) => {
     response.render('home');
 });
 
-app.get('/link', async (request, response) => {
-    response.render('link');
-});
-
 app.get('/:woozy', async (request, response) => {
     const woozylink = await woozy.findOne({
         shortURL: request.params.woozy
@@ -47,8 +43,8 @@ app.get('/:woozy', async (request, response) => {
 });
 
 app.post('/woozylink', async (request, response) => {
-    if (!request.body.link) {
-        return response.redirect('link');
+    if (!request.body.url) {
+        return response.redirect('/');
     };
 
     if (request.body.email.toLowerCase()) {
@@ -62,8 +58,8 @@ app.post('/woozylink', async (request, response) => {
         userSchema.save();
     };
 
-    const shortURL = woozyID(6);
-    const longURL = request.body.link;
+    const shortURL = woozyID(7);
+    const longURL = request.body.url;
 
     await woozy.create({
         email: request.body.email.toLowerCase() || 'None',
@@ -81,7 +77,7 @@ app.post('/woozylink', async (request, response) => {
 
 app.post('/woozyinfo', async (request, response) => {
     if (!request.body.email) {
-        return response.redirect('link');
+        return response.redirect('/');
     };
 
     const userSchema = await user.findOne({

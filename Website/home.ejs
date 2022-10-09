@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Woozy - Home</title>
     <link rel="stylesheet" href="Styles/style.css" type="text/css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -15,14 +14,14 @@
         <a class="logo" href="/">WOO<span style="color: var(--primary);">ZY</span></a>
         <nav>
             <ul>
-                <li><a href="home">Home</a></li>
+                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#">Donate</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
-        <a class="cta" href="link">Try it now!</a>
-        <a class="cta menu" href="link">Try it now!</a>
+        <a class="cta" href="#link">Try it now!</a>
+        <a class="cta menu" href="#link">Try it now!</a>
     </header>
     <main>
         <section class="home" id="home">
@@ -30,16 +29,51 @@
                 <img src="Assets/woozy.png" id="main-logo" alt="Logo" />
             </div>
             <div class="content">
-                <h3>Woo<a style="color: var(--primary);">zy</a> - The only tool you <a
-                        style="color: var(--primary);">need!</a></h3>
+                <h3>Woo<span>zy</span> - The only tool you <span>need!</span></h3>
                 <hr>
-                <p>Are your links too <a style="color: var(--primary);">hideous</a> and <a
-                        style="color: var(--primary);">spun-out</a>? Why don't you wooz it! Halloween mode:
-                    <label><input type="checkbox" id="checkbox" onclick="halloweenMode()" /><span></span></label>
-                </p>
-                <a href="link"><button>Try it now for free!</button></a>
+                <p>Are your links too <span>hideous</span> and <span>spun-out</span>? Why don't you wooz it! Halloween mode: <label for="checkbox"><input type="checkbox" id="checkbox" onclick="halloweenMode()" /><span></span></label></p>
+                <a href="#link"><button>Try it now for free!</button></a>
             </div>
         </section>
+        <section class="link" id="link">
+            <div class="form woozylink">
+                <div class="content">
+                    <span>Wooz a link!</span>
+                    <form action="/woozylink" method="post">
+                        <div class="field input-field">
+                            <input type="url" id="url" name="url" placeholder="URL" />
+                        </div>
+                        <div class="field input-field">
+                            <input type="email" id="email" name="email" placeholder="Email" />
+                        </div>
+                        <div class="field button-field">
+                            <button type="submit">Wooz it!</button>
+                        </div>
+                    </form>
+                    <div class="alternative">
+                        <span>Want to check your woozy links? <a href="#" class="alternative-link">Check them!</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form woozyinfo">
+                <div class="content">
+                    <span>Check your links!</span>
+                    <form action="/woozyinfo" method="post">
+                        <div class="field input-field">
+                            <input type="email" id="email" name="email" placeholder="Email" />
+                        </div>
+                        <div class="field button-field">
+                            <button type="submit">Check!</button>
+                        </div>
+                    </form>
+                    <div class="alternative">
+                        <span>Want to create a woozy link? <a href="#" class="alternative-link">Wooz it now!</a></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <article>
         <section class="about" id="about">
             <div class="content">
                 <h3>What is <span>Woozy</span>!?</h3>
@@ -49,7 +83,8 @@
                     link into a nice and <a style="color: var(--primary);">comfy</a> one. You have options to
                     <a style="color: var(--primary);">save</a> links and <a style="color: var(--primary);">view</a>
                     them! It's <a style="color: var(--primary);">free</a> to use and <a
-                        style="color: var(--primary);">no sign-up</a> is
+                        style="color: var(--primary);">no
+                        sign-up</a> is
                     needed!
                 </p>
             </div>
@@ -57,12 +92,12 @@
                 <img src="" alt="Logo" />
             </div>
         </section>
-        <footer>
-            <center>
-                <p>Copyright &copy; 2022 Woozy.<br>All Rights Reserved.</p>
-            </center>
-        </footer>
-    </main>
+    </article>
+    <footer>
+        <center>
+            <p>Copyright &copy; 2022 Woozy.<br>All Rights Reserved.</p>
+        </center>
+    </footer>
 
     <script src="Scripts/script.js"></script>
 </body>
