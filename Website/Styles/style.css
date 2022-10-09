@@ -423,6 +423,10 @@ article .about .content p {
     padding: 8px 0;
 }
 
+article .about .content p span {
+    color: var(--primary);
+}
+
 /* ----- Footer ----- */
 footer {
     background-color: var(--dark);
