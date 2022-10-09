@@ -56,6 +56,10 @@ header .logo {
     text-decoration: none;
 }
 
+header .logo span {
+    color: var(--primary);
+}
+
 header nav ul {
     display: flex;
     list-style: none;
